@@ -7,9 +7,10 @@ MODEL_FILENAME = '???.pkl'
 # model = load(MODEL_FILENAME)
 app = FastAPI()
 
-@app.get("/recommendation")
-async def get_recommendation(user_address: Union[str, None] = None, item_id: Union[str, None] = None):
-    return {"item_id":item_id,"user_address":user_address}
+@app.get("/recommendation/{item_id}")
+async def get_recommendation(item_id: str, user_address: Union[str, None] = None, type: Union[str, None] = None):
+    # type: 'similarity' or 'othersBought'
+    return {"item_id":item_id,"user_address":user_address,"type":type}
     # inputs = {"item_id": item_id, "user_address": user_address}
     # [prediction] = model.predict(inputs)
     # print("Prediction:", prediction)
