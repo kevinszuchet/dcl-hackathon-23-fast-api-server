@@ -12,15 +12,16 @@ Created on Thu May 18 13:23:06 2023
 
 import numpy as np
 import pandas as pd
+import pickle
 
-with open('recommender/simmilarity_matrix.pkl', 'rb') as f:
-    res = pickle.load(f)
-with open('recommender/occurrence_matrix.pkl', 'rb') as f:
-    ct = pickle.load(f)
-# res=np.loadtxt("simmilarity_matrix.pkl", delimiter=";")
-# ct=np.loadtxt("occurrence_matrix.pkl", delimiter=";")
 w_data=pd.read_csv('recommender/Salesforce_blip-vqa-base2.csv')
+     
+with open('recommender/simmilarity_matrix.pkl','rb') as f:
+    res = pickle.load(f)
 
+with open('recommender/occurrence_matrix.pkl','rb') as f:
+    ct = pickle.load(f)
+        
 # Just in case:
 for i in range(len(res)):
     res[i,i]=0
